@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zomato Chronicles - Menu</title>
+</head>
+<body>
+    <h1>Menu</h1>
+    <ul>
+        {% for dish in dishes %}
+        <li>
+            {{ dish.dish_name }} - ${{ dish.price }} - {% if dish.availability %}Available{% else %}Not Available{% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_dish' %}">Add Dish</a>
+    <a href="{% url 'take_order' %}">Take Order</a>
+</body>
+</html>

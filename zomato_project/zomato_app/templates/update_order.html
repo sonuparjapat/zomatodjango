@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zomato Chronicles - Update Order Status</title>
+</head>
+<body>
+    <h1>Update Order Status</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="order_id">Order ID:</label>
+        <input type="number" name="order_id" required><br>
+        <label for="new_status">New Status:</label>
+        <input type="text" name="new_status" required><br>
+        <button type="submit">Update Status</button>
+    </form>
+    <a href="{% url 'menu' %}">Back to Menu</a>
+</body>
+</html>

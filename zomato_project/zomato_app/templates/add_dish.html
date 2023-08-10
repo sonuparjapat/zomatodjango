@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zomato Chronicles - Add Dish</title>
+</head>
+<body>
+    <h1>Add Dish</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="dish_name">Dish Name:</label>
+        <input type="text" name="dish_name" required><br>
+        <label for="price">Price:</label>
+        <input type="number" name="price" step="0.01" required><br>
+        <label for="availability">Availability:</label>
+        <select name="availability">
+            <option value="yes">Available</option>
+            <option value="no">Not Available</option>
+        </select><br>
+        <button type="submit">Add Dish</button>
+    </form>
+    <a href="{% url 'menu' %}">Back to Menu</a>
+</body>
+</html>

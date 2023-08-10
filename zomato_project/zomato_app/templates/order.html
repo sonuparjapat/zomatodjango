@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Orders</h2>
+  <table>
+    <tr>
+      <th>Order ID</th>
+      <th>Customer Name</th>
+      <th>Status</th>
+      <th>Update Status</th>
+    </tr>
+    {% for order in orders %}
+      <tr>
+        <td>{{ order.order_id }}</td>
+        <td>{{ order.customer_name }}</td>
+        <td>{{ order.status }}</td>
+        <td>
+          <form method="post" action="{% url 'update_order_status' %}">
+            {% csrf_token %}
+            <input type="hidden" name="order_id" value="{{ order.order_id }}">
+            <select name="new_status">
+              <option value="received">Received</option>
+              <option value="preparing">Preparing</option>
+              <option value="ready">Ready</option>
+              <option value="delivered">Delivered</option>
+            </select>
+            <button type="submit">Update</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

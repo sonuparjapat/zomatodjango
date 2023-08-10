@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zomato Chronicles - Take Order</title>
+</head>
+<body>
+    <h1>Take Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="customer_name">Customer Name:</label>
+        <input type="text" name="customer_name" required><br>
+        <label for="dish_ids">Select Dishes:</label>
+        <select name="dish_ids" >
+            {% for dish in dishes %}
+            <option value="{{ dish.dish_id }}">{{ dish.dish_name }}</option>
+            {% endfor %}
+        </select><br>
+        <button type="submit">Place Order</button>
+    </form>
+    <a href="{% url 'menu' %}">Back to Menu</a>
+</body>
+</html>

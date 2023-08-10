@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Place Order</h2>
+  <form method="post" action="{% url 'place_order' %}">
+    {% csrf_token %}
+    <label for="customer_name">Customer Name:</label>
+    <input type="text" id="customer_name" name="customer_name" required><br>
+    <label for="selected_dishes">Select Dishes:</label>
+    <select name="selected_dishes" multiple required>
+      {% for dish in dishes %}
+        <option value="{{ dish.dish_id }}">{{ dish.dish_name }}</option>
+      {% endfor %}
+    </select><br>
+    <button type="submit">Place Order</button>
+  </form>
+  <a href="{% url 'menu' %}">Back to Menu</a>
+{% endblock %}
